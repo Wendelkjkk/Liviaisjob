@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armazenamento • liviacofre</title>
+    <link rel="stylesheet" href="style-storage.css">
+</head>
+<body>
+    <div class="storage-wrapper">
+        <nav class="storage-nav">
+            <div class="nav-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFB6C1" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <h1>livia<span>cofre</span></h1>
+            </div>
+            <div class="nav-path" id="breadcrumbs">
+                <a href="#" class="nav-home">Home</a>
+            </div>
+            <button class="nav-logout" id="logoutBtn">Sair</button>
+        </nav>
+
+        <main class="storage-main">
+            <div class="storage-actions">
+                <button id="createFolderBtn" class="action-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 19H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4l2-2h4a2 2 0 0 1 2 2v1"></path>
+                        <path d="M17 14h6m-3-3v6"></path>
+                    </svg>
+                    Nova Pasta
+                </button>
+                <button id="uploadBtn" class="action-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    Upload
+                </button>
+                <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+            </div>
+
+            <div class="storage-grid" id="storageGrid">
+                <!-- Pastas e imagens serão renderizadas aqui via JavaScript -->
+            </div>
+        </main>
+
+        <div class="modal" id="folderModal">
+            <div class="modal-content">
+                <h3>Criar Nova Pasta</h3>
+                <input type="text" id="folderName" placeholder="Nome da pasta" autocomplete="off">
+                <div class="modal-actions">
+                    <button id="cancelFolderBtn">Cancelar</button>
+                    <button id="confirmFolderBtn">Criar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast" id="toast"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script src="script-storage.js"></script>
+</body>
+</html>

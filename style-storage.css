@@ -1,0 +1,329 @@
+:root {
+    --amoled: #000000;
+    --rosa-bebe: #FFB6C1;
+    --rosa-hover: #FF69B4;
+    --texto: #FFFFFF;
+    --borda: rgba(255, 182, 193, 0.3);
+    --fundo-card: rgba(30, 30, 30, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--amoled);
+    color: var(--texto);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+}
+
+.storage-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navegação */
+.storage-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(15, 15, 15, 0.95);
+    border-bottom: 1px solid var(--borda);
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav-brand h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.nav-brand h1 span {
+    color: var(--rosa-bebe);
+}
+
+.nav-path {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.nav-path a {
+    color: var(--texto);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-path a:hover {
+    color: var(--rosa-bebe);
+}
+
+.nav-path a::after {
+    content: '/';
+    margin-left: 0.5rem;
+    color: var(--borda);
+}
+
+.nav-path a:last-child::after {
+    content: none;
+}
+
+.nav-logout {
+    background: none;
+    border: 1px solid var(--borda);
+    color: var(--texto);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.nav-logout:hover {
+    background: rgba(255, 182, 193, 0.1);
+    border-color: var(--rosa-bebe);
+}
+
+/* Conteúdo Principal */
+.storage-main {
+    flex: 1;
+    padding: 2rem;
+}
+
+.storage-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--rosa-bebe);
+    color: var(--amoled);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.action-btn:hover {
+    background: var(--rosa-hover);
+    transform: translateY(-2px);
+}
+
+.action-btn svg {
+    stroke-width: 2;
+}
+
+/* Grid de Itens */
+.storage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.storage-item {
+    background: var(--fundo-card);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.storage-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 182, 193, 0.1);
+    border-color: var(--rosa-bebe);
+}
+
+.item-folder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 180px;
+    padding: 1rem;
+}
+
+.item-folder svg {
+    width: 48px;
+    height: 48px;
+    stroke: var(--rosa-bebe);
+    margin-bottom: 0.75rem;
+}
+
+.item-folder span {
+    text-align: center;
+    word-break: break-word;
+    width: 100%;
+}
+
+.item-image {
+    position: relative;
+    height: 180px;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.item-image:hover .item-image-overlay {
+    opacity: 1;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.modal-content h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    color: var(--texto);
+    font-size: 1rem;
+    outline: none;
+    margin-bottom: 1.5rem;
+}
+
+.modal-content input:focus {
+    border-color: var(--rosa-bebe);
+    box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.2);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.modal-actions button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.modal-actions button:first-child {
+    background: none;
+    color: var(--texto);
+    border: 1px solid var(--borda);
+}
+
+.modal-actions button:first-child:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-actions button:last-child {
+    background: var(--rosa-bebe);
+    color: var(--amoled);
+}
+
+.modal-actions button:last-child:hover {
+    background: var(--rosa-hover);
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    color: var(--texto);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .storage-nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .storage-main {
+        padding: 1rem;
+    }
+
+    .storage-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+
+    .item-folder, .item-image {
+        height: 140px;
+    }
+}

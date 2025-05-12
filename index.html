@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login • PixelVault</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Removi o SVG inline do botão para evitar conflitos -->
+</head>
+<body>
+    <main class="login-wrapper">
+        <div class="login-container">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFB6C1" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <h1>livia<span>cofre</span></h1>
+            </div>
+            
+            <form id="login-form">
+                <div class="input-group">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        placeholder=" " 
+                        autocomplete="off"
+                        required
+                    >
+                    <label for="password">Senha</label>
+                </div>
+                <button type="submit" id="submit-button">
+                    <span>Acessar</span>
+                    <!-- SVG do botão movido para o CSS (opcional) -->
+                </button>
+            </form>
+
+            <p class="error-message" id="error-message"></p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
